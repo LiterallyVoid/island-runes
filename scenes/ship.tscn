@@ -1,0 +1,741 @@
+[gd_scene load_steps=31 format=3 uid="uid://c7hsmqsn5w8ug"]
+
+[ext_resource type="Script" path="res://debug/framerate.gd" id="1_05krq"]
+[ext_resource type="Texture2D" uid="uid://bha7uq1nn7qye" path="res://player/cursor.png" id="1_fvhxt"]
+[ext_resource type="Texture2D" uid="uid://dtvxdn7svvoy2" path="res://dialoguebox/border.svg" id="1_q8nye"]
+[ext_resource type="Script" path="res://scenes/root.gd" id="1_u68rt"]
+[ext_resource type="Script" path="res://player/player.gd" id="2_1cejb"]
+[ext_resource type="FontFile" uid="uid://bjdlcqniaiihj" path="res://fonts/dialogue.ttf" id="2_wc3qq"]
+[ext_resource type="FontFile" uid="uid://cwy77wevrwpmd" path="res://fonts/titles.ttf" id="3_2vl4d"]
+[ext_resource type="PackedScene" uid="uid://l8ck36nachja" path="res://models/open-world/open-world.blend" id="4_55h0c"]
+[ext_resource type="Script" path="res://dialoguebox/dialogue.gd" id="4_fkcfd"]
+[ext_resource type="Script" path="res://entities/island.gd" id="4_gygfv"]
+[ext_resource type="PackedScene" uid="uid://bvno3ss667etg" path="res://models/open-world/tree.blend" id="5_r8qou"]
+[ext_resource type="AudioStream" uid="uid://58mf3er61o1i" path="res://music/botany.ogg" id="7_7i0qu"]
+[ext_resource type="Script" path="res://viewmodel/viewmodel.gd" id="7_73ajh"]
+[ext_resource type="PackedScene" uid="uid://df4wgeacd61is" path="res://communicator/communicator.blend" id="7_kafls"]
+[ext_resource type="Texture2D" uid="uid://7ywpfb83xeio" path="res://dialoguebox/chevron.png" id="7_trm0m"]
+[ext_resource type="Script" path="res://scenes/menu.gd" id="10_tqg7f"]
+[ext_resource type="PackedScene" uid="uid://gpf7nuxpm5d8" path="res://models/open-world/water.blend" id="11_jtc4d"]
+[ext_resource type="AudioStream" uid="uid://bypaaysmymwh0" path="res://sounds/island-rise.ogg" id="15_co3fn"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xavus"]
+sky_energy_multiplier = 1.3
+sun_angle_max = 20.0
+sun_curve = 0.130583
+
+[sub_resource type="Sky" id="Sky_4irv4"]
+sky_material = SubResource("ProceduralSkyMaterial_xavus")
+
+[sub_resource type="Environment" id="Environment_qmejq"]
+background_mode = 2
+sky = SubResource("Sky_4irv4")
+tonemap_mode = 2
+
+[sub_resource type="Animation" id="Animation_dp2rs"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("communicator:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.00189975, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("communicator:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.0460505, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("communicator:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.00187249, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("communicator:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.0740489, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("communicator:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.0024467, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("communicator:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.0330599, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_7s0ny"]
+resource_name = "lower"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("communicator:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.000381861, -0.25, 0, 0.327399, 0.00454841, 0.0366552, -0.13418, 0.020143, 0.128813, -0.0129955),
+"times": PackedFloat32Array(0.00178907, 0.907057)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("communicator:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.046, -0.25, 0, 0.205743, -0.00024797, -0.0640596, -0.13418, 0.0610787, 0.25, 0),
+"times": PackedFloat32Array(0, 0.398962)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("communicator:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.001, -0.25, 0, 0.25, 0, 0.001, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("communicator:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.0740489, -0.25, 0, 0.835075, -0.909005, 0.841354, -0.112848, -0.690595, 0.25, 0),
+"times": PackedFloat32Array(0, 0.981777)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("communicator:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.0024467, -0.25, 0, 0.25, 0, 0.0024467, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("communicator:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.0330599, -0.25, 0, 0.218173, 0.0807451, 0.851662, -0.127894, -0.443218, 0.25, 0),
+"times": PackedFloat32Array(0, 0.601856)
+}
+
+[sub_resource type="Animation" id="Animation_2gvhg"]
+resource_name = "raise"
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("communicator:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(0.0776628, -0.25, 0, 0.107344, -0.0282738, 0.00169375, -0.0447267, 0.0046178, 0.0337195, -0.00348137, -0.000336603, -0.129194, 9.52477e-05, 0.25, 0),
+"times": PackedFloat32Array(0, 0.415063, 0.75)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("communicator:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 0),
+"points": PackedFloat32Array(-0.115943, -0.25, 0, 0.119867, 0.0627927, 0.0483335, -0.277305, 0.00626701, 0.118988, -0.00268909, 0.0459587, -0.115072, -0.000543986, 0.0697736, 0.000329845, 0.0457784, -0.395384, -1.76206e-05, 0.25, 0),
+"times": PackedFloat32Array(0, 0.375704, 0.685212, 0.992932)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("communicator:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.0393364, -0.25, 0, 0.2, 0.0348212, 0.00141207, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.701314)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("communicator:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(0.570867, -0.25, 0, 0.411485, -0.681482, -0.0424667, -0.0387778, -0.0410306, 0.0483048, 0.0511111, -0.0740489, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(-0.0357813, 0.502728, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("communicator:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.0024467, -0.25, 0, 0.25, 0, 0.0024467, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("communicator:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.25543, -0.25, 0, 0.220055, 0.408889, -0.0509852, -0.177118, 0.0255556, 0.25, 0, -0.0330599, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.193219, 0.678056, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_otgxg"]
+_data = {
+"RESET": SubResource("Animation_dp2rs"),
+"lower": SubResource("Animation_7s0ny"),
+"raise": SubResource("Animation_2gvhg")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o3fjs"]
+size = Vector3(0.7, 2, 0.7)
+
+[sub_resource type="Animation" id="Animation_fjaah"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Game/Dialogue/Speech:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Game/Dialogue:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Game/Dialogue:advance_allowed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Game/Dialogue/Advance hint:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Game/Dialogue/Advance hint/Sprite2D:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(24, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Game/Dialogue/Advance hint/Sprite2D:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_77xld"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Game/Dialogue/Speech:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.615574, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Game/Dialogue:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Game/Dialogue:advance_allowed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Game/Dialogue/Advance hint:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Game/Dialogue/Advance hint/Sprite2D:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(24, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.937861)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Game/Dialogue/Advance hint/Sprite2D:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.937861)
+}
+
+[sub_resource type="Animation" id="Animation_hms68"]
+resource_name = "tick"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Game/Dialogue/Advance hint/Sprite2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(24, -0.25, 0, 0.25, 0, 23.1031, -0.25, 0, 0.25, 0, 24, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.332766, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Game/Dialogue/Advance hint/Sprite2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(16, -0.25, 0, 0.177118, 0.661093, 26.3241, -0.0339923, 1.61051, 0.0357813, -3.22101, 16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.356024, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uwk15"]
+_data = {
+"RESET": SubResource("Animation_fjaah"),
+"show": SubResource("Animation_77xld"),
+"tick": SubResource("Animation_hms68")
+}
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_u68rt")
+
+[node name="Game" type="Node" parent="."]
+
+[node name="world" type="Node3D" parent="Game"]
+
+[node name="open-world" parent="Game/world" instance=ExtResource("4_55h0c")]
+
+[node name="tree6" parent="Game/world/open-world/island 1" index="1" instance=ExtResource("5_r8qou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97966, -1.71858, 3.62266)
+
+[node name="tree7" parent="Game/world/open-world/island 1" index="2" instance=ExtResource("5_r8qou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1112, -1.86711, -2.50688)
+
+[node name="tree" parent="Game/world/open-world/island 1" index="3" instance=ExtResource("5_r8qou")]
+transform = Transform3D(-0.386904, 0, 0.92212, 0, 1, 0, -0.92212, 0, -0.386904, 0.825459, 10.9163, -11.2604)
+
+[node name="tree4" parent="Game/world/open-world/island 1" index="4" instance=ExtResource("5_r8qou")]
+transform = Transform3D(1.25478, 0, 0.339882, 0, 1.3, 0, -0.339882, 0, 1.25478, 14.6904, 9.6347, -39.1983)
+
+[node name="tree8" parent="Game/world/open-world/island 1" index="5" instance=ExtResource("5_r8qou")]
+transform = Transform3D(0.995725, 0, -0.0923707, 0, 1, 0, 0.0923707, 0, 0.995725, 3.60932, 10.955, -5.60204)
+
+[node name="tree2" parent="Game/world/open-world/island 1" index="6" instance=ExtResource("5_r8qou")]
+transform = Transform3D(-0.392793, 0, -1.34377, 0, 1.4, 0, 1.34377, 0, -0.392793, 8.29759, 10.4411, -11.5435)
+
+[node name="tree3" parent="Game/world/open-world/island 1" index="7" instance=ExtResource("5_r8qou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.49077, 4.26805, -12.9315)
+
+[node name="island 2" parent="Game/world/open-world" index="1"]
+script = ExtResource("4_gygfv")
+
+[node name="tree4" parent="Game/world/open-world/island 2" index="1" instance=ExtResource("5_r8qou")]
+transform = Transform3D(0.233327, 0, -0.972399, 0, 1, 0, 0.972399, 0, 0.233327, -15.9653, 12.1044, -29.2288)
+
+[node name="tree6" parent="Game/world/open-world/island 2" index="2" instance=ExtResource("5_r8qou")]
+transform = Transform3D(0.233327, 0, -0.972399, 0, 1, 0, 0.972399, 0, 0.233327, -42.3447, 12.5496, -46.3749)
+
+[node name="tree5" parent="Game/world/open-world/island 2" index="3" instance=ExtResource("5_r8qou")]
+transform = Transform3D(-0.179695, 0, -0.983722, 0, 1, 0, 0.983722, 0, -0.179695, -24.3733, 2.94541, -23.3657)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Game/world"]
+environment = SubResource("Environment_qmejq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Game/world/WorldEnvironment"]
+transform = Transform3D(0.894834, -0.230159, -0.38249, 0.265319, -0.414852, 0.870347, -0.358995, -0.880298, -0.310158, 0, 3.53449, 0)
+light_color = Color(1, 0.636277, 0.500129, 1)
+light_energy = 0.5
+shadow_enabled = true
+sky_mode = 1
+
+[node name="water2" parent="Game/world" instance=ExtResource("11_jtc4d")]
+
+[node name="water" parent="Game/world/water2" index="0"]
+cast_shadow = 0
+
+[node name="player" type="CharacterBody3D" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.96166, 0)
+script = ExtResource("2_1cejb")
+
+[node name="look_horizontal" type="Node3D" parent="Game/player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.419404, 0)
+
+[node name="look_vertical" type="Node3D" parent="Game/player/look_horizontal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382368, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Game/player/look_horizontal/look_vertical"]
+near = 0.01
+
+[node name="viewmodel" type="Node3D" parent="Game/player/look_horizontal/look_vertical"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("7_73ajh")
+
+[node name="sway" type="Node3D" parent="Game/player/look_horizontal/look_vertical/viewmodel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0368519, -0.0732436, -0.132116)
+
+[node name="communicator" parent="Game/player/look_horizontal/look_vertical/viewmodel/sway" instance=ExtResource("7_kafls")]
+transform = Transform3D(0.999457, 0.0328729, 0.00243999, -0.0329633, 0.996715, 0.0739813, -9.31323e-10, -0.0740215, 0.997257, 0.00189975, 0.0460505, 0.00187249)
+
+[node name="communicator_animation" type="AnimationPlayer" parent="Game/player/look_horizontal/look_vertical/viewmodel/sway"]
+libraries = {
+"": SubResource("AnimationLibrary_otgxg")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Game/player"]
+shape = SubResource("BoxShape3D_o3fjs")
+
+[node name="blood" type="ColorRect" parent="Game/player"]
+visible = false
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.938286, 0.299772, 0.300829, 1)
+
+[node name="Dialogue" type="Control" parent="Game"]
+z_index = -1
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -144.0
+offset_right = 360.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_fkcfd")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game/Dialogue"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 2.0
+anchor_bottom = 2.0
+offset_left = 16.0
+offset_right = -48.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_q8nye")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="Speech" type="RichTextLabel" parent="Game/Dialogue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = -24.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_separation = 5
+theme_override_fonts/normal_font = ExtResource("2_wc3qq")
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+text = "How do I shoehorn “Folklore” into my game? Please help! The jam ends like 30 hours from now and I have no game!!"
+scroll_active = false
+visible_characters_behavior = 1
+
+[node name="Speaker" type="Label" parent="Game/Dialogue"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -16.0
+offset_right = 192.0
+offset_bottom = 40.0
+rotation = -0.0872665
+theme_override_fonts/font = ExtResource("3_2vl4d")
+theme_override_font_sizes/font_size = 40
+text = "NPC #10,497,121"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Game/Dialogue"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_uwk15")
+}
+
+[node name="Advance hint" type="Control" parent="Game/Dialogue"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -56.0
+offset_right = -24.0
+offset_bottom = -8.00073
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Game/Dialogue/Advance hint"]
+texture_filter = 4
+position = Vector2(24, 16)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("7_trm0m")
+
+[node name="crosshair" type="TextureRect" parent="Game"]
+z_index = -1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.55
+anchor_right = 0.5
+anchor_bottom = 0.55
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(128, 128)
+texture = ExtResource("1_fvhxt")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("7_7i0qu")
+volume_db = -19.163
+autoplay = true
+
+[node name="island_cue" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_co3fn")
+volume_db = -19.163
+
+[node name="Framerate" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1.43911e-05, 0.973479, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 3
+text = "10 fps"
+script = ExtResource("1_05krq")
+
+[node name="menu" type="ColorRect" parent="."]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.301961)
+script = ExtResource("10_tqg7f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -176.0
+offset_right = 200.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="menu/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2vl4d")
+theme_override_font_sizes/font_size = 50
+text = "GWJ70 GAME!!
+"
+horizontal_alignment = 1
+
+[node name="spacer" type="Control" parent="menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="play" type="Button" parent="menu/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2vl4d")
+theme_override_font_sizes/font_size = 40
+text = "PLAY"
+
+[node name="spacer2" type="Control" parent="menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="exit" type="Button" parent="menu/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2vl4d")
+theme_override_font_sizes/font_size = 30
+text = "QUIT"
+
+[node name="spacer3" type="Control" parent="menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="menu/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wc3qq")
+text = "Volume:"
+
+[node name="HSlider" type="HSlider" parent="menu/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 0.5
+
+[connection signal="pressed" from="menu/VBoxContainer/play" to="." method="_resume"]
+[connection signal="value_changed" from="menu/VBoxContainer/HSlider" to="menu" method="_on_music_volume_changed"]
+
+[editable path="Game/world/open-world"]
+[editable path="Game/world/water2"]
