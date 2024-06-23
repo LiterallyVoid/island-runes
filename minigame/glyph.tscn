@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://minigame/glyph.gd" id="2_7x35h"]
 
 [node name="glyph" type="Sprite2D"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_tmoog")
 region_enabled = true
 region_rect = Rect2(0, 0, 256, 256)
