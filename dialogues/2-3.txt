@@ -1,0 +1,7 @@
+@puzzle 2-3
+@radio_up
+[other] You’ve just completed the game!
+[other] You get nothing in return.
+[other] See ya!
+[radio] HA. HA. HA. HA. HA. HA.
+@radio_down

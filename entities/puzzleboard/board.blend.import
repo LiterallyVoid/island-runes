@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://l8ck36nachja"
-path="res://.godot/imported/open-world.blend-4af7f767a6bc36c7df6e8c096dc2b4dd.scn"
+uid="uid://3ns6mxykbain"
+path="res://.godot/imported/board.blend-59c8d7d3a204010de3d15daa0a1bfe1c.scn"
 
 [deps]
 
-source_file="res://models/open-world/open-world.blend"
-dest_files=["res://.godot/imported/open-world.blend-4af7f767a6bc36c7df6e8c096dc2b4dd.scn"]
+source_file="res://entities/puzzleboard/board.blend"
+dest_files=["res://.godot/imported/board.blend-59c8d7d3a204010de3d15daa0a1bfe1c.scn"]
 
 [params]
 
@@ -18,7 +18,7 @@ nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 meshes/ensure_tangents=true
-meshes/generate_lods=false
+meshes/generate_lods=true
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
@@ -31,16 +31,9 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "nodes": {
-"PATH:island 1": {
+"PATH:Cube": {
 "generate/physics": true,
-"physics/shape_type": 2
-},
-"PATH:island_2": {
-"generate/physics": true,
-"physics/shape_type": 2
-},
-"PATH:water": {
-"mesh_instance/layers": 2
+"physics/shape_type": 1
 }
 }
 }

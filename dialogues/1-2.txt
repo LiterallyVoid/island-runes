@@ -1,0 +1,9 @@
+@puzzle 1-2
+@activate island_2
+@radio_up
+[radio] CALLING:  [Maya Exeter]
+[other] Uh. Hi?
+[me] There are two islands now.
+[other] Ookay.
+@radio_down
+

@@ -1,4 +1,2 @@
-@radio_up
-[radio] CALLING: [Maya Exeter]
-[other] Uh. Hi?
-[me] There are two islands now.
+@puzzle 1-1
+@activate puzzle_1-2

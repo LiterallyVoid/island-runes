@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://oroi4muu2pxb"]
+
+[ext_resource type="PackedScene" uid="uid://3ns6mxykbain" path="res://entities/puzzleboard/board.blend" id="1_i6e2e"]
+[ext_resource type="Script" path="res://entities/puzzleboard/puzzleboard.gd" id="1_mbqpc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5w1ef"]
+size = Vector3(2.5, 2.5, 1)
+
+[node name="Node3D" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_mbqpc")
+
+[node name="board" parent="." instance=ExtResource("1_i6e2e")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5w1ef")
+
+[editable path="board"]

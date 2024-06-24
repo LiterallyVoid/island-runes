@@ -1,20 +1,14 @@
 @radio_up
-[radio] INCOMING CALL FROM: [Maya Exeter]…
-@raise
-[other] Is this thing on? Hello?
-[me] Hello hello.
-[other] I’ve been trying to call you for hours now! How’s your trip to New York going? Make some new friends?
-[other] …
-[other] I take it you’re not in New York.
+[radio] COORDINATES: 999999° 59′59″N, 999999° 59′59″E
+[radio] INCOMING CALL FROM:  [Maya Exeter]
+[other] Is this thing on? I’ve been trying to call you for hours now! How’s your trip to New York going? Make some new friends?
+[me] Hi.
+[other] …I take it you’re not in New York.
 [me] I just woke up on a deserted island. In the middle of nowhere.
-[other] You’re joking.
-[other] Okay, I think the friends thing has been ruled out. On the other hand, made any enemies recently?
+[other] You’re joking. Okay, I think the friends thing has been ruled out. On the other hand, made any enemies recently?
 [me] Hah, very funny. Uh, not that I know of. I might have broken the law once or twice. An hour. But that shouldn’t —
 [other] Where does your communicator show you? It does have a GPS, right? It was like $5,000, it must have GPS.
-[radio] COORDINATES: 999999° 59′59″N, 999999° 59′59″E
-[me] …it’s not working.
-[other] Just to be abundantly clear: you’re seriously stuck on an island in the middle of nowhere? You’re not joking?
-[me] Right. Also, the ocean’s red. Maybe I should’ve led with that.
+[me] …it’s not working. Also, the ocean’s red. Maybe I should’ve led with that.
 [other] Oookay. Does it taste like blood?
 [me] Doesn’t taste like much of anything, to be honest.
 @radio_down

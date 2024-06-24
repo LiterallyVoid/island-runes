@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://2jp1rb4k84cs"]
+
+[ext_resource type="Texture2D" uid="uid://cm0rwww71bmau" path="res://minigame/slot.png" id="1_2lmnw"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Slot" type="Sprite2D" parent="."]
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("1_2lmnw")

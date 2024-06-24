@@ -1,0 +1,2 @@
+@puzzle 2-1
+@activate puzzle_2-2

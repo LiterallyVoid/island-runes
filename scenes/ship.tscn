@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c7hsmqsn5w8ug"]
+[gd_scene load_steps=35 format=3 uid="uid://c7hsmqsn5w8ug"]
 
 [ext_resource type="Script" path="res://debug/framerate.gd" id="1_05krq"]
 [ext_resource type="Texture2D" uid="uid://bha7uq1nn7qye" path="res://player/cursor.png" id="1_fvhxt"]
@@ -15,9 +15,13 @@
 [ext_resource type="Script" path="res://viewmodel/viewmodel.gd" id="7_73ajh"]
 [ext_resource type="PackedScene" uid="uid://df4wgeacd61is" path="res://communicator/communicator.blend" id="7_kafls"]
 [ext_resource type="Texture2D" uid="uid://7ywpfb83xeio" path="res://dialoguebox/chevron.png" id="7_trm0m"]
+[ext_resource type="Script" path="res://entities/interact.gd" id="9_3kq0q"]
+[ext_resource type="Script" path="res://scenes/puzzle-container.gd" id="9_dn2oy"]
 [ext_resource type="Script" path="res://scenes/menu.gd" id="10_tqg7f"]
 [ext_resource type="PackedScene" uid="uid://gpf7nuxpm5d8" path="res://models/open-world/water.blend" id="11_jtc4d"]
 [ext_resource type="AudioStream" uid="uid://bypaaysmymwh0" path="res://sounds/island-rise.ogg" id="15_co3fn"]
+[ext_resource type="Texture2D" uid="uid://wq5xlvm8tsow" path="res://player/cursor-interact.png" id="17_3yge4"]
+[ext_resource type="PackedScene" uid="uid://oroi4muu2pxb" path="res://entities/puzzleboard/puzzleboard.tscn" id="19_ptdu2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xavus"]
 sky_energy_multiplier = 1.3
@@ -446,37 +450,59 @@ script = ExtResource("1_u68rt")
 [node name="open-world" parent="Game/world" instance=ExtResource("4_55h0c")]
 
 [node name="tree6" parent="Game/world/open-world/island 1" index="1" instance=ExtResource("5_r8qou")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97966, -1.71858, 3.62266)
+transform = Transform3D(-0.157176, 0, -1.195, 0, 1.20529, 0, 1.195, 0, -0.157176, -2.68523, -1.97158, 4.99295)
 
 [node name="tree7" parent="Game/world/open-world/island 1" index="2" instance=ExtResource("5_r8qou")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1112, -1.86711, -2.50688)
+transform = Transform3D(-0.535517, 0, 0.844524, 0, 1, 0, -0.844524, 0, -0.535517, 4.66706, 6.49834, -25.0178)
 
 [node name="tree" parent="Game/world/open-world/island 1" index="3" instance=ExtResource("5_r8qou")]
-transform = Transform3D(-0.386904, 0, 0.92212, 0, 1, 0, -0.92212, 0, -0.386904, 0.825459, 10.9163, -11.2604)
+transform = Transform3D(0.839743, 0, 0.542984, 0, 1, 0, -0.542984, 0, 0.839743, 13.9109, 9.50576, -40.0405)
 
 [node name="tree4" parent="Game/world/open-world/island 1" index="4" instance=ExtResource("5_r8qou")]
-transform = Transform3D(1.25478, 0, 0.339882, 0, 1.3, 0, -0.339882, 0, 1.25478, 14.6904, 9.6347, -39.1983)
+transform = Transform3D(0.682734, 0, -1.33562, 0, 1.5, 0, 1.33562, 0, 0.682734, 9.46817, 9.93875, -9.70138)
 
 [node name="tree8" parent="Game/world/open-world/island 1" index="5" instance=ExtResource("5_r8qou")]
-transform = Transform3D(0.995725, 0, -0.0923707, 0, 1, 0, 0.0923707, 0, 0.995725, 3.60932, 10.955, -5.60204)
+transform = Transform3D(0.192059, 0, -0.981383, 0, 1, 0, 0.981383, 0, 0.192059, 3.20862, 10.9265, -11.1655)
 
 [node name="tree2" parent="Game/world/open-world/island 1" index="6" instance=ExtResource("5_r8qou")]
-transform = Transform3D(-0.392793, 0, -1.34377, 0, 1.4, 0, 1.34377, 0, -0.392793, 8.29759, 10.4411, -11.5435)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8515, -1.71565, 0.00570965)
 
 [node name="tree3" parent="Game/world/open-world/island 1" index="7" instance=ExtResource("5_r8qou")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.49077, 4.26805, -12.9315)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.34898, -0.486467, 4.40537)
 
-[node name="island 2" parent="Game/world/open-world" index="1"]
+[node name="puzzle_1-2" parent="Game/world/open-world/island 1" index="8" instance=ExtResource("19_ptdu2")]
+transform = Transform3D(-0.21474, -0.793646, 0.569221, -0.0425009, 0.589859, 0.806387, -0.975746, 0.148971, -0.160397, 4.16729, 9.93156, -40.3656)
+dialogue = "1-2"
+
+[node name="puzzle_1-1" parent="Game/world/open-world/island 1" index="9" instance=ExtResource("19_ptdu2")]
+transform = Transform3D(-0.871992, 0.277408, -0.403329, -1.49012e-08, 0.823928, 0.566694, 0.48952, 0.494153, -0.718459, -4.24274, 2.7564, -26.4883)
+dialogue = "island"
+active = true
+
+[node name="island_2" parent="Game/world/open-world" index="1"]
 script = ExtResource("4_gygfv")
 
-[node name="tree4" parent="Game/world/open-world/island 2" index="1" instance=ExtResource("5_r8qou")]
-transform = Transform3D(0.233327, 0, -0.972399, 0, 1, 0, 0.972399, 0, 0.233327, -15.9653, 12.1044, -29.2288)
+[node name="tree4" parent="Game/world/open-world/island_2" index="0" instance=ExtResource("5_r8qou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.7061, 12.8065, -45.882)
 
-[node name="tree6" parent="Game/world/open-world/island 2" index="2" instance=ExtResource("5_r8qou")]
-transform = Transform3D(0.233327, 0, -0.972399, 0, 1, 0, 0.972399, 0, 0.233327, -42.3447, 12.5496, -46.3749)
+[node name="tree6" parent="Game/world/open-world/island_2" index="1" instance=ExtResource("5_r8qou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3599, 12.5003, -36.5495)
 
-[node name="tree5" parent="Game/world/open-world/island 2" index="3" instance=ExtResource("5_r8qou")]
-transform = Transform3D(-0.179695, 0, -0.983722, 0, 1, 0, 0.983722, 0, -0.179695, -24.3733, 2.94541, -23.3657)
+[node name="tree5" parent="Game/world/open-world/island_2" index="2" instance=ExtResource("5_r8qou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4761, 3.17037, -21.5818)
+
+[node name="puzzle_2-2" parent="Game/world/open-world/island_2" index="3" instance=ExtResource("19_ptdu2")]
+transform = Transform3D(-0.461315, -0.336424, 0.820979, 0, 0.925322, 0.379182, -0.887236, 0.174922, -0.426865, -19.0621, 13.4709, -29.0581)
+dialogue = "2-2"
+
+[node name="puzzle_2-1" parent="Game/world/open-world/island_2" index="4" instance=ExtResource("19_ptdu2")]
+transform = Transform3D(1, 0, 0, 0, 0.948628, 0.316394, 0, -0.316394, 0.948628, -19.3404, 4.56531, -22.3218)
+dialogue = "2-1"
+active = true
+
+[node name="puzzle_2-3" parent="Game/world/open-world/island_2" index="5" instance=ExtResource("19_ptdu2")]
+transform = Transform3D(-0.461315, -0.336424, 0.820979, 0, 0.925322, 0.379182, -0.887236, 0.174922, -0.426865, -20.295, 13.4709, -31.4294)
+dialogue = "2-3"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Game/world"]
 environment = SubResource("Environment_qmejq")
@@ -495,6 +521,7 @@ cast_shadow = 0
 
 [node name="player" type="CharacterBody3D" parent="Game"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.96166, 0)
+collision_layer = 2
 script = ExtResource("2_1cejb")
 
 [node name="look_horizontal" type="Node3D" parent="Game/player"]
@@ -514,12 +541,22 @@ script = ExtResource("7_73ajh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0368519, -0.0732436, -0.132116)
 
 [node name="communicator" parent="Game/player/look_horizontal/look_vertical/viewmodel/sway" instance=ExtResource("7_kafls")]
-transform = Transform3D(0.999457, 0.0328729, 0.00243999, -0.0329633, 0.996715, 0.0739813, -9.31323e-10, -0.0740215, 0.997257, 0.00189975, 0.0460505, 0.00187249)
+transform = Transform3D(0.999456, 0.0328728, 0.00243999, -0.0329633, 0.996714, 0.0739813, -9.31322e-10, -0.0740214, 0.997257, 0.00189975, 0.0460505, 0.00187249)
 
 [node name="communicator_animation" type="AnimationPlayer" parent="Game/player/look_horizontal/look_vertical/viewmodel/sway"]
 libraries = {
 "": SubResource("AnimationLibrary_otgxg")
 }
+
+[node name="Node3D" type="Node3D" parent="Game/player/look_horizontal/look_vertical"]
+transform = Transform3D(1, 0, 0, 0, 0.0638531, -0.997959, 0, 0.997959, 0.0638531, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Game/player/look_horizontal/look_vertical/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.179981, 0)
+target_position = Vector3(0, -3, 0)
+collision_mask = 5
+hit_from_inside = true
+script = ExtResource("9_3kq0q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Game/player"]
 shape = SubResource("BoxShape3D_o3fjs")
@@ -534,6 +571,44 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.938286, 0.299772, 0.300829, 1)
 
+[node name="puzzle container" type="Control" parent="Game"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("9_dn2oy")
+
+[node name="Panel" type="Panel" parent="Game/puzzle container"]
+clip_contents = true
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="panel center" type="Control" parent="Game/puzzle container/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Dialogue" type="Control" parent="Game"]
 z_index = -1
 layout_mode = 3
@@ -547,6 +622,7 @@ offset_top = -144.0
 offset_right = 360.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 script = ExtResource("4_fkcfd")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game/Dialogue"]
@@ -577,6 +653,7 @@ offset_right = -24.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/line_separation = 5
 theme_override_fonts/normal_font = ExtResource("2_wc3qq")
 theme_override_font_sizes/normal_font_size = 22
@@ -618,6 +695,7 @@ offset_right = -24.0
 offset_bottom = -8.00073
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Game/Dialogue/Advance hint"]
 texture_filter = 4
@@ -640,7 +718,27 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(128, 128)
+mouse_filter = 2
 texture = ExtResource("1_fvhxt")
+
+[node name="crosshair_interact" type="TextureRect" parent="Game"]
+visible = false
+z_index = -1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.55
+anchor_right = 0.5
+anchor_bottom = 0.55
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(128, 128)
+mouse_filter = 2
+texture = ExtResource("17_3yge4")
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 process_mode = 3
@@ -684,9 +782,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -200.0
-offset_top = -176.0
+offset_top = -177.5
 offset_right = 200.0
-offset_bottom = 24.0
+offset_bottom = 177.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
@@ -695,9 +793,16 @@ theme_override_constants/separation = 0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_2vl4d")
 theme_override_font_sizes/font_size = 50
-text = "GWJ70 GAME!!
-"
+text = "Island Runes"
 horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="menu/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wc3qq")
+theme_override_font_sizes/font_size = 25
+text = "Keys: W/A/S/D to move, Space to jump, E to interact"
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="spacer" type="Control" parent="menu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
@@ -734,8 +839,24 @@ max_value = 1.0
 step = 0.0
 value = 0.5
 
+[node name="spacer4" type="Control" parent="menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="menu/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wc3qq")
+text = "Sensitivity:"
+
+[node name="HSlider2" type="HSlider" parent="menu/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 0.5
+
 [connection signal="pressed" from="menu/VBoxContainer/play" to="." method="_resume"]
 [connection signal="value_changed" from="menu/VBoxContainer/HSlider" to="menu" method="_on_music_volume_changed"]
+[connection signal="value_changed" from="menu/VBoxContainer/HSlider2" to="menu" method="_on_sensitivity_changed"]
 
 [editable path="Game/world/open-world"]
 [editable path="Game/world/water2"]

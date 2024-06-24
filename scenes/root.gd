@@ -16,12 +16,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _notification(what):
+	if not visible: return
 	if what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT:
 		_pause()
 
-func _pause() -> void:
+func _pause(show_menu: bool = true) -> void:
 	get_tree().paused = true
-	menu.show()
+	if show_menu:
+		menu.show()
 	
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 

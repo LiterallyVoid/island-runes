@@ -17,15 +17,28 @@ const space = " \r\n\t"
 @export
 var advance_allowed := true
 
+var completed: Dictionary = {}
+var current := ""
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false
+	$"../puzzle container".cancel.connect(cancel)
+	$"../puzzle container".complete.connect(advance)
 
 	play("intro")
 
+func cancel() -> void:
+	lines = []
+	cursor = 0
+	current = ""
+	advance()
+
 func play(name: String) -> void:
+	current = name
+
 	var file := FileAccess.open("res://dialogues/" + name + ".txt", FileAccess.READ)
-	lines = file.get_as_text().split("\n")
+	lines = file.get_as_text(true).split("\n")
 	cursor = 0
 
 	advance()
@@ -45,18 +58,35 @@ func speaker_radio() -> void:
 	speaker.text = "XR-65Y1 All-In-One Solo Radio"
 	speaker.modulate = Color("#D4E9FF")
 
-func command_radio_up():
+func command_radio_up() -> bool:
 	$"../player/look_horizontal/look_vertical/viewmodel/sway/communicator_animation".play("raise")
+	return false
 
-func command_radio_down():
+func command_radio_down() -> bool:
 	$"../player/look_horizontal/look_vertical/viewmodel/sway/communicator_animation".play("lower")
+	return false
 
-func command_raise():
-	$"../world/open-world/island 2"._activate()
+func command_activate(name: String) -> bool:
+	var any := false
+	for node in $"../world".find_children(name):
+		any = true
+		node._activate()
+	
+	if not any:
+		printerr("@activate no nodes: ", name)
+
+	return false
+
+func command_puzzle(name: String) -> bool:
+	advance_allowed = false
+	$"../puzzle container"._activate(name)
+	return true
 
 func execute_one() -> bool:
+	visible = false
+
 	if cursor == len(lines):
-		visible = false
+		completed[current] = true
 		return true
 
 	var line := lines[cursor].lstrip(space).rstrip(space)
@@ -67,9 +97,14 @@ func execute_one() -> bool:
 
 	if line.begins_with("@"):
 		var command := line.substr(1)
-		call("command_" + command)
-		return false
-	
+		if command.contains(" "):
+			var split := command.split(" ")
+			command = split[0]
+			var arg := split[1]
+			return call("command_" + command, arg)
+		else:
+			return call("command_" + command)
+
 	if line.begins_with("["):
 		var speaker_end = line.find("]", 1)
 		var speaker_id = line.substr(1, speaker_end - 1)
@@ -101,6 +136,8 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("use") and advance_allowed:
-		advance()
+	if not visible: return
+
+	if event.is_action_pressed("use"):
+		if advance_allowed: advance()
 		get_viewport().set_input_as_handled()

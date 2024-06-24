@@ -54,3 +54,13 @@ Find a fuel cell to fix your communicator.
 # IDEA 2
 
 "Folklore". Folklore folklore folklore.
+
+!1 0 66
+6 1
+ 0
+1 6
+ 0
+# 3
+ 0
+1 0
+ 2

@@ -140,9 +140,10 @@ func _process(delta) -> void:
 	look_horizontal.rotation = Vector3(0, view_angle.x, 0)
 	look_vertical.rotation = Vector3(view_angle.y, 0, 0)
 
+var sensitivity := 0.003
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		var sensitivity := 0.003
 		get_viewport().set_input_as_handled()
 
 		view_angle.x -= event.relative.x * sensitivity
